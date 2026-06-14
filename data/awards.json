@@ -1,0 +1,258 @@
+{ "awards": [
+  {
+   "id": "foenem_grave",  
+    "name": "ON FOENEM GRAVE",
+    "description": "Click The Foenem Button",
+    "icon": "/resources/menu/awards/icon_4NEM.png",
+    "condition": {
+      "gross_clicks": "1"
+    }
+  },
+  {
+   "id": "foenem10",  
+    "name": "FOENEM X10",
+    "description": "Earn 10 Foenem Per Second",
+    "icon": "/resources/menu/awards/icon_foenem10.png",
+    "condition": {
+      "fps": "10"
+    }
+  },
+  {
+   "id": "foenem50",  
+    "name": "FOENEM X50",
+    "description": "Earn 50 Foenem Per Second",
+    "icon": "/resources/menu/awards/icon_foenem50.png",
+    "condition": {
+      "fps": "50"
+    }
+  },
+  {
+   "id": "foenem100",  
+    "name": "FOENEM X100",
+    "description": "Earn 100 Foenem Per Second",
+    "icon": "/resources/menu/awards/icon_foenem100.png",
+    "condition": {
+      "fps": "100"
+    }
+  },
+  {
+   "id": "foenem500",  
+    "name": "FOENEM X500",
+    "description": "Earn 500 Foenem Per Second",
+    "icon": "/resources/menu/awards/icon_foenem500.png",
+    "condition": {
+      "fps": "500"
+    }
+  },
+  {
+   "id": "foenem1000",  
+    "name": "FOENEM X1000",
+    "description": "Earn 1000 Foenem Per Second",
+    "icon": "/resources/menu/awards/icon_foenem1000.png",
+    "condition": {
+      "fps": "1000"
+    }
+  },
+  {
+   "id": "100",  
+    "name": "Keep it a Hunnid",
+    "description": "Press Foenem 100 Times",
+    "icon": "/resources/menu/awards/icon_100.png",
+    "condition": {
+      "gross_clicks": "100"
+    }
+  },
+  {
+   "id": "300",  
+    "name": "3Hunna",
+    "description": "Press Foenem 300 Times",
+    "icon": "/resources/menu/awards/icon_300.png",
+    "condition": {
+      "gross_clicks": "300"
+    }
+  },
+  {
+   "id": "500",  
+    "name": "5Hunna",
+    "description": "Press Foenem 500 Times",
+    "icon": "/resources/menu/awards/icon_500.png",
+    "condition": {
+      "gross_clicks": "500"
+    }
+  },
+  {
+   "id": "100squared",  
+    "name": "100^2",
+    "description": "Press Foenem 10000 Times",
+    "icon": "/resources/menu/awards/icon_1002.png",
+    "condition": {
+      "gross_clicks": "10000"
+    }
+  },
+  {
+   "id": "milestone1",  
+    "name": "Milestone I",
+    "description": "Get a score over 1000",
+    "icon": "/resources/menu/awards/icon_milestone1.png",
+    "condition": {
+      "net_score": "1000"
+    }
+  },
+  {
+   "id": "milestone2",  
+    "name": "Milestone II",
+    "description": "Get a score over 10000",
+    "icon": "/resources/menu/awards/icon_milestone2.png",
+    "condition": {
+      "net_score": "10000"
+    }
+  },
+  {
+   "id": "milestone3",  
+    "name": "Milestone III",
+    "description": "Get a score over 100000",
+    "icon": "/resources/menu/awards/icon_milestone3.png",
+    "condition": {
+      "net_score": "100000"
+    }
+  },
+  {
+   "id": "milestone4",  
+    "name": "Milestone IV",
+    "description": "Get a score over 1000000",
+    "icon": "/resources/menu/awards/icon_milestone4.png",
+    "condition": {
+      "net_score": "1000000"
+    }
+  },
+  {
+   "id": "milestone5",  
+    "name": "Milestone V",
+    "description": "Get a score over 10000000",
+    "icon": "/resources/menu/awards/icon_milestone5.png",
+    "condition": {
+      "net_score": "10000000"
+    }
+  },
+{
+    "id": "shopping_spree",
+    "name": "Shopping Spree",
+    "description": "Own 1 of every store item",
+    "icon": "/resources/menu/awards/icon_shopping.png",
+    "condition": {
+      "owned_items": {
+        "auto-clicker": "1",
+        "helping-hand": "1",
+        "brofist": "1",
+        "drinking-bird": "1",
+        "bodega": "1",
+        "double-tap": "1",
+        "foenem-farm": "1",
+        "lie-detector": "1",
+        "perk-30": "1",
+        "pack-a-punch": "1",
+        "special-drank": "1",
+        "vape-store-24hr": "1",
+        "foeneminator": "1",
+        "dark-matter-clicker": "1",
+        "milk-crate-skyscraper": "1",
+        "haunted-lie-detector": "1",
+        "section-8-space-station": "1"
+      }
+    }
+  },
+  {
+    "id": "index_fund",
+    "name": "Index Fund",
+    "description": "Own 10 of every stonk at once",
+    "icon": "/resources/menu/awards/icon_index.png",
+    "condition": { "owned_stocks": { "stop_snitchin_studios": "10", "super-ghetto-bros": "10", "dropshipper": "10", "chiraq-funniest-moments": "10", "derpcoin": "10", "superbuy": "10" } }
+  },
+  {
+    "id": "overdose",
+    "name": "Overdose",
+    "description": "Own 5 Perk 30s and 2 Special Dranks",
+    "icon": "/resources/menu/awards/icon_overdose.png",
+    "condition": { "owned_items": { "perk-30": "5", "special-drank": "2" } }
+  },
+  {
+    "id": "never_forget",
+    "name": "Never Forget",
+    "description": "Own 2 Milk Crate Skyscrapers",
+    "icon": "/resources/menu/awards/icon_milkcrate.png",
+    "condition": { "owned_items": { "milk-crate-skyscraper": "2" } }
+  },
+  {
+    "id": "da_ocky_way",
+    "name": "Da Ocky Way",
+    "description": "Own 25 Bodegas",
+    "icon": "/resources/menu/awards/icon_bodega.png",
+    "condition": { "owned_items": { "bodega": "25" } }
+  },
+  {
+   "id": "ballout",  
+    "name": "BALLOUT",
+    "description": "Spend 1000000 Foenem",
+    "icon": "/resources/menu/awards/icon_ballout.png",
+    "condition": {
+      "gross_spent": "1000000"
+    }
+  },
+  {
+   "id": "auto_clicker_master",  
+    "name": "Auto Clicker Master",
+    "description": "Own 50 Auto Clickers",
+    "icon": "/resources/menu/awards/icon_autoclicker.png",
+     "condition": { "owned_items": { "auto-clicker": "50" } }
+  },
+  {
+   "id": "redpill",  
+    "name": "The Red Pill",
+    "description": "Own 100 Dropshipper Acadamy Stonk",
+    "icon": "/resources/menu/awards/icon_redpill.png",
+     "condition": { "owned_stocks": { "dropshipper": "100" } }
+  },
+  {
+   "id": "pandabuy",  
+    "name": "Ultimate Spreadsheet",
+    "description": "Own 50 SuperBuy CN Stonk",
+    "icon": "/resources/menu/awards/icon_panda.png",
+     "condition": { "owned_stocks": { "superbuy": "50" } }
+  },
+  {
+   "id": "stfu",  
+    "name": "STFU",
+    "description": "Own 10 Stop Snitchin' Studios Stonk",
+    "icon": "/resources/menu/awards/icon_stfu.png",
+     "condition": { "owned_stocks": { "stop_snitchin_studios": "10" } }
+  },
+  {
+   "id": "sybau",  
+    "name": "SYBAU",
+    "description": "Own 100 Stop Snitchin' Studios Stonk",
+    "icon": "/resources/menu/awards/icon_sybau.png",
+     "condition": { "owned_stocks": { "stop_snitchin_studios": "100" } }
+  },
+  {
+   "id": "oblock",  
+    "name": "O'Block Shareholder",
+    "description": "Own 100 @Chiraq_Funniest_Moments Stonk",
+    "icon": "/resources/menu/awards/icon_obloc.png",
+     "condition": { "owned_stocks": { "chiraq-funniest-moments": "100" } }
+  },
+  {
+   "id": "hodl",  
+    "name": "HODL",
+    "description": "Buy a $DERPCOIN",
+    "icon": "/resources/menu/awards/icon_hodl.png",
+     "condition": { "owned_stocks": { "derpcoin": "1" } }
+  },
+  {
+   "id": "kingcrypto",  
+    "name": "KING CRYPTO",
+    "description": "Own 100 $DERPCOIN",
+    "icon": "/resources/menu/awards/icon_king.png",
+     "condition": { "owned_stocks": { "derpcoin": "100" } }
+  }
+]
+}

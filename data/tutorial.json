@@ -1,0 +1,46 @@
+{
+  "tutorial": [
+    {
+      "id": "welcome",
+      "title": "Welcome to Foenem Clicker!",
+      "icon": "resources/menu/tutorial/tut_intro.png",
+      "description": "Thank you for downloading PeeWee Purpdrank's FOENEM Clicker. In this game, you tap the big Foenem button to accumulate your score. The more you click, the richer you get!"
+    },
+    {
+      "id": "score",
+      "title": "Your Score",
+      "icon": "resources/menu/tutorial/tut_score.png",
+      "description": "Your total Foenem and your Foenem Per Second (FPS) are displayed above the button. FPS earns money while you are idle."
+    },
+    {
+      "id": "shop",
+      "title": "Visit the Shop",
+      "icon": "resources/menu/tutorial/tut_store.png",
+      "description": "Tap the Shop icon in the taskbar to spend your Foenem score on upgrades. Upgrades increase your Click Power and FPS automatically."
+    },
+    {
+      "id": "stocks",
+      "title": "Play the Market",
+      "icon": "resources/menu/tutorial/tut_stonks.png",
+      "description": "The Stonk Market lets you buy and sell shares. Prices rise and fall every second. Each stonk fluctuates differently so be sure to spend some time evaluating when it's best to buy one, — buy low, sell high!"
+    },
+    {
+      "id": "achievements",
+      "title": "Earn Achievements",
+      "icon": "resources/menu/tutorial/tut_awards.png",
+      "description": "Complete milestones and objectives to unlock Achievements. Each one is a badge of honour. Gotta catch 'em all!"
+    },
+    {
+      "id": "fullscreen",
+      "title": "Fullscreen Mode",
+      "icon": "resources/menu/tutorial/tut_intro.png",
+      "description": "For desktop users, you can toggle the game window to fullscreen by going to the settings menu."
+    },
+    {
+      "id": "ready",
+      "title": "You're Ready!",
+      "icon": "resources/menu/tutorial/tut_end.png",
+      "description": "That's everything you need to know. Tap 'LET'S GO!' and start building your Foenem empire. Good luck!"
+    }
+  ]
+}

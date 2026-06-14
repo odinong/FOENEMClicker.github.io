@@ -1,0 +1,56 @@
+{  "stocks": [
+    {
+      "id": "stop_snitchin_studios",
+      "name": "Stop Snitchin' Studios",
+      "basePrice": 25.0,
+      "description": "Media conglomerate",
+      "icon": "/resources/menu/stock/icon_sss.png",
+      "volatility": 0.1
+    },
+    {
+      "id": "super-ghetto-bros",
+      "name": "SuperGhettoBrosTV",
+      "basePrice": 50.0,
+      "description": "DAILY UNCENSORED 18+ HOOD FIGHTS",
+      "icon": "/resources/menu/stock/icon_superghettobros.png",
+      "volatility": 0.3,
+    },
+    {
+      "id": "dropshipper",
+      "name": "Dropshipper Acadamy",
+      "basePrice": 500.0,
+      "description": "Escape the Matrix.",
+      "icon": "/resources/menu/stock/icon_redpill.png",
+      "volatility": 0.3,
+    },
+    {
+      "id": "chiraq-funniest-moments",
+      "name": "@Chiraq_Funniest_Moments",
+      "basePrice": 2.5,
+      "description": "The biggest memepage in Chicago.",
+      "icon": "/resources/menu/stock/icon_chiraq.png",
+      "volatility": 0.9,
+    },
+    {
+      "id": "derpcoin",
+      "name": "$DERPCOIN",
+      "basePrice": 5000.0,
+      "description": "A bizarre form of e-currency.",
+      "icon": "/resources/menu/stock/icon_derpcoin.png",
+      "volatility": 0.02,
+    },
+    {
+      "id": "superbuy",
+      "name": "SuperBuy CN",
+      "basePrice": 125.0,
+      "description": "Verified Chinese Shipping Agency Consumer Goods",
+      "icon": "/resources/menu/stock/icon_pandabuy.png",
+      "volatility": 0.2,
+    },
+  ],
+  "market": {
+    "baseVolatility": 0.05,
+    "marketEvents": ["bull_market", "bear_market", "crash"],
+    "updateInterval": 10
+  }
+}

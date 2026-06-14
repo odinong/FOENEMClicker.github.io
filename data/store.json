@@ -1,0 +1,140 @@
+{
+  "store": [
+    {
+      "id": "auto-clicker",
+      "name": "Auto Clicker",
+      "cost": 15,
+      "description": "Auto clicks every 10 seconds.",
+      "icon": "/resources/menu/store/icon_autoclicker.png",
+      "attribute": { "fps": 0.1 }
+    },
+    {
+      "id": "helping-hand",
+      "name": "Helping Hand",
+      "cost": 100,
+      "description": "Auto clicks every 2 seconds",
+      "icon": "/resources/menu/store/icon_helpinghand.png",
+      "attribute": { "fps": 0.5 }
+    },
+    {
+      "id": "brofist",
+      "name": "Brofist",
+      "cost": 250,
+      "description": "Click value +0.5. Tapping is meta.",
+      "icon": "/resources/menu/store/icon_brofist.png",
+      "attribute": { "fpc": 0.5 }
+    },
+    {
+      "id": "drinking-bird",
+      "name": "Drinking Bird",
+      "cost": 800,
+      "description": "Taps foenem every second. YYYYY...",
+      "icon": "/resources/menu/store/icon_drinkingbird.png",
+      "attribute": { "fps": 1 }
+    },
+    {
+      "id": "bodega",
+      "name": "Bodega",
+      "cost": 3000,
+      "description": "Passive income da ocky way. 5 foenems every second.",
+      "icon": "/resources/menu/store/icon_bodega.png",
+      "attribute": { "fps": 5 }
+    },
+    {
+      "id": "double-tap",
+      "name": "Double Tap",
+      "cost": 5000,
+      "description": "Click value +2. No root beer required.",
+      "icon": "/resources/menu/store/icon_doubletap.png",
+      "attribute": { "fpc": 2 }
+    },
+    {
+      "id": "foenem-farm",
+      "name": "Foenem Farm",
+      "cost": 15000,
+      "description": "+20 FPS. Industrialized foenems.",
+      "icon": "/resources/menu/store/icon_farm.png",
+      "attribute": { "fps": 20 }
+    },
+    {
+      "id": "lie-detector",
+      "name": "Lie Detector",
+      "cost": 35000,
+      "description": "Click value +5. HE LYIN.",
+      "icon": "/resources/menu/store/icon_lie.png",
+      "attribute": { "fpc": 5 }
+    },
+    {
+      "id": "perk-30",
+      "name": "Perk 30",
+      "cost": 80000,
+      "description": "+50 FPS. IM SCHTICKIN RN.",
+      "icon": "/resources/menu/store/icon_perk.png",
+      "attribute": { "fps": 50 }
+    },
+    {
+      "id": "pack-a-punch",
+      "name": "Pack A Punch",
+      "cost": 150000,
+      "description": "Click value +15. Heavy hitter.",
+      "icon": "/resources/menu/store/icon_pap.png",
+      "attribute": { "fpc": 15 }
+    },
+    {
+      "id": "special-drank",
+      "name": "Special Drank",
+      "cost": 400000,
+      "description": "Click value +50. Tastes like candy!",
+      "icon": "/resources/menu/store/icon_drank.png",
+      "attribute": { "fpc": 50 }
+    },
+    {
+      "id": "vape-store-24hr",
+      "name": "24hr Vape Store",
+      "cost": 1000000,
+      "description": "+250 FPS. Open all night.",
+      "icon": "/resources/menu/store/icon_vape.png",
+      "attribute": { "fps": 250 }
+    },
+    {
+      "id": "foeneminator",
+      "name": "The Foeneminator",
+      "cost": 2500000,
+      "description": "Click value +150. ON FOENEM.",
+      "icon": "/resources/menu/store/icon_foeneminator.png",
+      "attribute": { "fpc": 150 }
+    },
+    {
+      "id": "dark-matter-clicker",
+      "name": "Dark Matter Clicker",
+      "cost": 7500000,
+      "description": "It uses Dark Mango Psychology. (+500 FPS)",
+      "icon": "/resources/menu/store/icon_darkclicker.png",
+      "attribute": { "fps": 500 }
+    },
+    {
+      "id": "milk-crate-skyscraper",
+      "name": "Milk Crate Skyscraper",
+      "cost": 20000000,
+      "description": "+1500 FPS. Don't try this at home.",
+      "icon": "/resources/menu/store/icon_milkcrate.png",
+      "attribute": { "fps": 1500 }
+    },
+    {
+      "id": "haunted-lie-detector",
+      "name": "Haunted Lie Detector",
+      "cost": 50000000,
+      "description": "Click value +1000. Hauughhh...",
+      "icon": "/resources/menu/store/icon_mythiclie.png",
+      "attribute": { "fpc": 1000 }
+    },
+    {
+      "id": "section-8-space-station",
+      "name": "Section 8 Space Station",
+      "cost": 250000000,
+      "description": "10000 FPS. Manufactured in Israel.",
+      "icon": "/resources/menu/store/icon_section8.png",
+      "attribute": { "fps": 10000 }
+    }
+  ]
+}

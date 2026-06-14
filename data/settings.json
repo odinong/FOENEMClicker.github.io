@@ -1,0 +1,70 @@
+{ "settings": [
+  {
+    "id": "fullscreen",
+    "title": "Fullscreen Mode",
+    "description": "Toggle fullscreen mode on or off.",
+    "type": "toggle",
+    "default": false
+  },
+  {
+    "id": "music",
+    "title": "Music",
+    "description": "Toggle background music on or off.",
+    "type": "toggle",
+    "default": true
+  },
+  {
+    "id": "sfx",
+    "title": "Sound Effects",
+    "description": "Toggle button click and notification sounds.",
+    "type": "toggle",
+    "default": true
+  },
+  {
+    "id": "particles",
+    "title": "Click Particles",
+    "description": "Show rain effects that fall when you tap the button.",
+    "type": "toggle",
+    "default": true
+  },
+  {
+    "id": "sunburst",
+    "title": "Sunburst Effect",
+    "description": "Show the rotating sunbursts behind the Foenem button.",
+    "type": "toggle",
+    "default": true
+  },
+  {
+    "id": "background",
+    "title": "Background Theme",
+    "description": "Cycle through available background art styles.",
+    "type": "cycle",
+    "default": 1,
+    "options": ["resources/bg/city.png", "resources/bg/gems.png", "resources/bg/sky.png"],
+    "labels":  ["City", "Gems", "Sky"]
+  },
+  {
+    "id": "click_sound",
+    "title": "Click Sound",
+    "description": "Choose the sound played each time you tap.",
+    "type": "cycle",
+    "default": 1,
+    "options": ["uiClick", "uiClick2", "uiClick3"],
+    "labels":  ["Classic", "Snare", "Foenem"]
+  },
+  {
+    "id": "replay_tutorial",
+    "title": "Replay Tutorial",
+    "description": "Watch the intro tutorial again from the beginning.",
+    "type": "action",
+    "label": "REPLAY",
+    "default": false
+  },
+  {
+    "id": "delete_save",
+    "title": "Delete Save",
+    "description": "Permanently wipe all progress and start fresh. This cannot be undone.",
+    "type": "danger",
+    "default": false
+  }
+]}
