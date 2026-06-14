@@ -191,6 +191,7 @@ function doClick(clientX, clientY) {
   foenem.style.transform = "scale(.9)";
   setTimeout(()=>foenem.style.transform="", 60);
   refreshHud();
+  updateAffordability(); // light up the shop immediately when a click earns enough
   checkAwards();
 }
 foenem.addEventListener("pointerdown", e => { doClick(e.clientX, e.clientY); });
@@ -224,7 +225,33 @@ function refreshHud() {
   fpsEl.textContent = fmt(getFPS());                      // FPS shows fractional rates (e.g. 0.1)
 }
 
+/* ---------- Live affordability ----------
+   Refresh the gold/gray state (and buy buttons) of the open Shop / Stonks panel
+   in place as the score changes, so newly-affordable items light up without
+   having to reopen the panel. Done in place to preserve scroll position. */
+function updateAffordability() {
+  if (openWin === "store") {
+    document.querySelectorAll("#panel-body .entry[data-item]").forEach(row => {
+      const item = STORE.find(i => i.id === row.dataset.item);
+      if (!item) return;
+      const price = dynamicPrice(item);
+      const afford = data.net_score >= price && isFinite(price);
+      row.classList.toggle("invalid", !afford);
+    });
+  } else if (openWin === "stocks") {
+    document.querySelectorAll("#panel-body .entry[data-stock]").forEach(row => {
+      const s = STOCKS.find(x => x.id === row.dataset.stock);
+      if (!s) return;
+      const afford = data.net_score >= market[s.id].currentPrice;
+      row.classList.toggle("invalid", !afford);
+      const buyBtn = row.querySelector(".sbtn.buy, .sbtn.off"); // first button = BUY
+      if (buyBtn) buyBtn.className = "sbtn " + (afford ? "buy" : "off");
+    });
+  }
+}
+
 let lastTick = performance.now();
+let affordTimer = 0;
 function gameLoop(now) {
   const dt = Math.min((now - lastTick)/1000, 1);
   lastTick = now;
@@ -236,6 +263,8 @@ function gameLoop(now) {
   }
   marketTimer += dt;
   if (marketTimer >= MARKET.updateInterval) { marketTimer = 0; updateStockPrices(); }
+  affordTimer += dt;
+  if (affordTimer >= 0.2) { affordTimer = 0; updateAffordability(); checkAwards(); }
   refreshHud();
   requestAnimationFrame(gameLoop);
 }
@@ -294,6 +323,7 @@ function renderStore() {
     const attrLabel = item.attr.fps != null ? "FPS: +"+item.attr.fps : "FPC: +"+item.attr.fpc;
     const row = document.createElement("div");
     row.className = "entry" + (afford ? "" : " invalid");
+    row.dataset.item = item.id;
     row.innerHTML = `
       <img class="ico" src="${item.icon}" onerror="this.style.visibility='hidden'">
       <div class="info">
@@ -372,6 +402,7 @@ function renderStocks() {
     const afford = data.net_score >= m.currentPrice;
     const row = document.createElement("div");
     row.className = "entry" + (afford ? "" : " invalid");
+    row.dataset.stock = s.id;
     row.innerHTML = `
       <img class="ico" src="${s.icon}" onerror="this.style.visibility='hidden'">
       <div class="info">
