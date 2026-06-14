@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>PeeWee Purpdrank's FOENEM Clicker</title>
+<style>
+  @font-face { font-family:'ArialRounded'; src:url('resources/font/arial-rounded.ttf') format('truetype'); }
+  :root { --panel-w: 58%; --taskbar-h: 84px; --gold:#ffcf2b; --green:#4caf2f; --red:#d11; }
+  * { box-sizing:border-box; -webkit-user-select:none; user-select:none; }
+  html,body { margin:0; padding:0; height:100%; overflow:hidden; background:#000; color:#fff;
+    font-family:'ArialRounded','Arial Rounded MT Bold',Arial,sans-serif; touch-action:manipulation; }
+  #game { position:fixed; inset:0; background-size:cover; background-position:center bottom; }
+  #game.bg-on { background-image:url('resources/bg/city.png'); }
+  #playzone {
+    position:absolute; top:0; left:0; right:0; bottom:var(--taskbar-h);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+    transition:right .25s ease;
+  }
+  body.panel-open #playzone { right:var(--panel-w); }
+
+  #score-box {
+    background:rgba(8,6,10,.66); border:1px solid rgba(255,255,255,.12); border-radius:14px;
+    padding:14px 30px; text-align:center; min-width:260px;
+    box-shadow:0 6px 24px rgba(0,0,0,.5);
+  }
+  #score { font-size:clamp(26px,3.4vw,42px); font-weight:900; color:#fff; line-height:1.05;
+    text-shadow:0 2px 0 #000; word-break:break-all; }
+  #fps-line { font-size:clamp(12px,1.5vw,17px); margin-top:6px; color:#dcdcdc; }
+  #fps-line b { color:var(--gold); }
+
+  #foenem-wrap { position:relative; display:flex; align-items:center; justify-content:center; }
+  #shine { position:absolute; width:480px; height:480px; max-width:80vmin; max-height:80vmin;
+    background:url('resources/shine.png') center/contain no-repeat; animation:spin 16s linear infinite; opacity:.55; pointer-events:none; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  #foenem { width:300px; height:300px; max-width:46vmin; max-height:46vmin;
+    background:url('resources/foenem_button.png') center/contain no-repeat; cursor:pointer; position:relative;
+    transition:transform .06s ease-out; filter:drop-shadow(0 12px 18px rgba(0,0,0,.55)); }
+  #foenem:active { transform:scale(.93); }
+
+  .float { position:absolute; font-weight:900; color:var(--gold); pointer-events:none; font-size:30px; z-index:50;
+    text-shadow:0 2px 0 #000; animation:floatUp 1s ease-out forwards; }
+  @keyframes floatUp { from{ transform:translateY(0) scale(1); opacity:1;} to{ transform:translateY(-90px) scale(1.4); opacity:0;} }
+  .particle { position:absolute; width:26px; height:26px; pointer-events:none; z-index:48;
+    background:url('resources/foenem_particle.png') center/contain no-repeat; }
+
+  #taskbar {
+    position:absolute; left:0; right:0; bottom:0; height:var(--taskbar-h);
+    background:linear-gradient(#2c2c2c,#070707); border-top:1px solid #000;
+    display:flex; align-items:center; gap:18px; padding:0 26px; z-index:30;
+    box-shadow:0 -3px 12px rgba(0,0,0,.6);
+  }
+  .tb-btn { width:58px; height:58px; border:none; background:transparent; cursor:pointer; padding:4px;
+    border-radius:10px; transition:background .12s, transform .06s; opacity:.92; }
+  .tb-btn img { width:100%; height:100%; object-fit:contain; pointer-events:none;
+    filter:drop-shadow(0 2px 2px rgba(0,0,0,.6)); }
+  .tb-btn:hover { background:rgba(255,255,255,.1); }
+  .tb-btn:active { transform:translateY(2px); }
+  .tb-btn.active { background:rgba(255,207,43,.22); box-shadow:inset 0 0 0 2px var(--gold); }
+
+  #panel {
+    position:absolute; top:6px; right:6px; bottom:calc(var(--taskbar-h) + 6px); width:calc(var(--panel-w) - 12px);
+    display:none; flex-direction:column; z-index:25;
+    background:rgba(10,8,12,.93); border:2px solid #000; border-radius:6px; overflow:hidden;
+    box-shadow:0 10px 50px rgba(0,0,0,.7);
+  }
+  #panel.open { display:flex; animation:slideIn .22s ease-out; }
+  @keyframes slideIn { from{ transform:translateX(40px); opacity:0; } to{ transform:translateX(0); opacity:1; } }
+  #panel-head {
+    height:40px; flex:none; display:flex; align-items:center; justify-content:space-between;
+    background:linear-gradient(#4a4a4a,#161616); border-bottom:2px solid #000; padding:0 4px 0 14px;
+  }
+  #panel-title { font-weight:800; letter-spacing:2px; font-size:15px; color:#eee; text-shadow:0 1px 2px #000; }
+  #panel-close { width:34px; height:30px; border:none; cursor:pointer; border-radius:4px;
+    background:url('resources/ui/window/ui_close_window.png') center/contain no-repeat; }
+  #panel-close:hover { filter:brightness(1.2); }
+  #panel-body { flex:1; overflow-y:auto; padding:8px; }
+  #panel-body::-webkit-scrollbar { width:10px; }
+  #panel-body::-webkit-scrollbar-thumb { background:#555; border-radius:5px; }
+  #panel-body::-webkit-scrollbar-track { background:#111; }
+
+  .entry {
+    display:flex; align-items:center; gap:14px; padding:10px 12px; margin-bottom:7px; min-height:74px;
+    border-radius:4px; position:relative; color:#1a1305;
+    background:url('resources/ui/window/menu_entry.png'); background-size:100% 100%;
+    box-shadow:0 2px 4px rgba(0,0,0,.4);
+  }
+  .entry.invalid { background:url('resources/ui/window/menu_entry_invalid.png'); background-size:100% 100%; color:#3a3a3a; }
+  .entry .ico { width:54px; height:54px; flex:none; object-fit:contain; image-rendering:auto;
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.4)); }
+  .entry .info { flex:1; min-width:0; padding-right:6px; }
+  .entry .nm { font-weight:800; font-size:17px; line-height:1.05; }
+  .entry .ds { font-size:12.5px; margin-top:2px; line-height:1.15; opacity:.92; }
+  .entry .meta { font-size:11px; margin-top:4px; color:#1f6e12; font-weight:700; }
+  .entry.invalid .meta { color:#5a5a5a; }
+  .price-box {
+    flex:none; min-width:118px; max-width:130px; text-align:center; padding:14px 8px; border-radius:5px;
+    font-weight:800; font-size:13px; color:#fff; word-break:break-all; line-height:1.1;
+    background:linear-gradient(#5fbf3a,#2f7d1c); border:1px solid #1c4d12; cursor:pointer;
+    box-shadow:0 2px 3px rgba(0,0,0,.4); align-self:stretch; display:flex; align-items:center; justify-content:center;
+  }
+  .price-box:hover { filter:brightness(1.08); }
+  .price-box:active { transform:translateY(1px); }
+  .entry.invalid .price-box { background:linear-gradient(#9a9a9a,#6f6f6f); border-color:#555; color:#eee; cursor:not-allowed; }
+
+  .stock-actions { flex:none; display:flex; flex-direction:column; gap:5px; min-width:120px; }
+  .stock-price { text-align:right; font-weight:800; font-size:15px; }
+  .chg { font-size:12px; font-weight:700; }
+  .chg.up { color:#1f6e12; } .chg.down { color:#9b1c1c; }
+  .entry.invalid .chg.up { color:#3a7a30; }
+  .sbtn { border:none; border-radius:5px; cursor:pointer; font-family:inherit; font-weight:800; font-size:12px;
+    padding:7px 0; color:#fff; text-transform:uppercase; }
+  .sbtn.buy { background:linear-gradient(#5fbf3a,#2f7d1c); }
+  .sbtn.sell { background:linear-gradient(#e05a5a,#a51e1e); }
+  .sbtn.off { background:#888; cursor:not-allowed; }
+
+  #awards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(86px,1fr)); gap:12px; padding:4px; }
+  .award { text-align:center; opacity:.4; filter:grayscale(1); transition:.18s; }
+  .award.unlocked { opacity:1; filter:none; }
+  .award:hover { transform:scale(1.07); }
+  .award img { width:62px; height:62px; object-fit:contain; }
+  .award .an { font-size:10px; margin-top:3px; line-height:1.1; height:24px; overflow:hidden; color:#eee; }
+
+  .row2 { display:flex; align-items:center; gap:12px; padding:11px 12px; margin-bottom:8px; border-radius:6px;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); }
+  .row2 img { width:46px; height:46px; object-fit:contain; flex:none; }
+  .row2 .info { flex:1; min-width:0; }
+  .row2 .nm { font-weight:800; color:var(--gold); font-size:15px; }
+  .row2 .ds { font-size:12px; opacity:.85; margin-top:2px; }
+  .ebtn { border:none; border-radius:6px; cursor:pointer; font-family:inherit; font-weight:800; font-size:13px;
+    padding:8px 14px; text-transform:uppercase; }
+  .ebtn.blue { background:#2f7bf7; color:#fff; } .ebtn.red { background:var(--red); color:#fff; }
+  .slider { width:140px; accent-color:var(--gold); }
+  .toggle { width:54px; height:28px; border-radius:14px; background:#555; position:relative; cursor:pointer; border:none; }
+  .toggle.on { background:var(--green); }
+  .toggle::after { content:''; position:absolute; top:3px; left:3px; width:22px; height:22px; border-radius:50%; background:#fff; transition:left .15s; }
+  .toggle.on::after { left:29px; }
+
+  #notify { position:absolute; top:18px; left:50%; transform:translateX(-50%) translateY(-170px);
+    width:min(420px,86vw); background:linear-gradient(var(--gold),#e0a500); color:#1b1009; border-radius:12px;
+    padding:12px 16px; display:flex; align-items:center; gap:12px; box-shadow:0 10px 40px rgba(0,0,0,.6); z-index:60;
+    transition:transform .45s cubic-bezier(.2,1.3,.4,1); }
+  body.panel-open #notify { left:calc((100% - var(--panel-w))/2); }
+  #notify.show { transform:translateX(-50%) translateY(0); }
+  #notify img { width:48px; height:48px; object-fit:contain; }
+  #notify .nt { font-weight:900; font-size:12px; letter-spacing:1px; }
+  #notify .nn { font-weight:900; font-size:17px; }
+
+  #title-tag { position:absolute; top:5px; left:9px; font-size:10px; opacity:.4; z-index:5; letter-spacing:1px; }
+
+  @media (max-width:760px) {
+    :root { --panel-w: 100%; }
+    body.panel-open #playzone { display:none; }
+    #panel { left:0; right:0; top:0; bottom:var(--taskbar-h); width:100%; border-radius:0; }
+  }
+</style>
+</head>
+<body>
+<div id="game" class="bg-on">
+  <div id="title-tag">FOENEM Clicker — web port (by probablymaybehuh on discord)</div>
+
+  <div id="playzone">
+    <div id="score-box">
+      <div id="score">0</div>
+      <div id="fps-line">Foenem Per Second: <b id="fps">0</b></div>
+    </div>
+    <div id="foenem-wrap">
+      <div id="shine"></div>
+      <div id="foenem"></div>
+    </div>
+  </div>
+
+  <div id="notify">
+    <img id="notify-icon" src="">
+    <div><div class="nt">ACHIEVEMENT UNLOCKED!</div><div class="nn" id="notify-name"></div></div>
+  </div>
+
+  <div id="panel">
+    <div id="panel-head"><span id="panel-title">SHOP</span><button id="panel-close"></button></div>
+    <div id="panel-body"></div>
+  </div>
+
+  <div id="taskbar">
+    <button class="tb-btn" data-win="store"   title="Shop"><img src="resources/ui/ui_store.png"></button>
+    <button class="tb-btn" data-win="awards"  title="Awards"><img src="resources/ui/ui_awards.png"></button>
+    <button class="tb-btn" data-win="stocks"  title="Stonks"><img src="resources/ui/ui_stocks.png"></button>
+    <button class="tb-btn" data-win="settings" title="Settings"><img src="resources/ui/ui_settings.png"></button>
+    <button class="tb-btn" data-win="extra"   title="Extra"><img src="resources/ui/ui_extra.png"></button>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
