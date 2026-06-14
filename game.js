@@ -220,8 +220,8 @@ function spawnParticles(x, y) {
 }
 
 function refreshHud() {
-  scoreEl.textContent = fmt(data.net_score);
-  fpsEl.textContent = fmt(getFPS());
+  scoreEl.textContent = fmt(Math.floor(data.net_score)); // game floors the score for display
+  fpsEl.textContent = fmt(getFPS());                      // FPS shows fractional rates (e.g. 0.1)
 }
 
 let lastTick = performance.now();
